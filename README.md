@@ -54,6 +54,8 @@ The candidates json file maps candidate IDs to candidate objects.
 }
 ```
 
+### 
+
 ### preferences.json
 The preferences json file is a map of electorate ids to preference flow objects.
 The preference flow objects consist of a list of preference flow round objects.
@@ -67,7 +69,10 @@ the ID of the candidate whose votes were transferred.
       {
         23971: {
           "candidate_id": 23971, // The id of the candidate for this preference flow data
+          "round": 0,            // A zero indexed number for which round of preference flow it is
+          "eliminated": false,   // Has the candidate been eliminated from the running yet?
           "votes": 45678,        // The total number of votes the candidate has
+                                 // for this round of preferences (0 for eliminated candidates)
         },
         "transferrer": null      // The id of the vote transferrer
                                  // for this round (null for the first round)
