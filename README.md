@@ -54,7 +54,37 @@ The candidates json file maps candidate IDs to candidate objects.
 }
 ```
 
-### 
+### firstpreferences.json
+The firstpreferences json file maps electorates to the tallies of first preferences for each candidate.
+```javascript
+{
+  179: {
+    "electorate_id": 179, // The ID of the electorate
+    "votes": {            // Tallies of first preferences
+      23971: 45678        // Candidate ID is the key
+                          // and the value is the number of first preferences
+    }
+  }
+}
+```
+
+### twocandidate.json
+The twocandidate json file maps electorates to the two preferred candidates and the number associated of votes for each.
+```javascript
+{
+  179: {
+    "candidates": [       // List of two preferred candidates
+      {
+        "id": 23971,      // ID of the candidate
+        "votes": 46810,   // The number of votes the candidate has
+                          // over the other candidate
+      },
+      ...
+    ]
+  },
+  ...
+}
+```
 
 ### preferences.json
 The preferences json file is a map of electorate ids to preference flow objects.
@@ -63,8 +93,8 @@ The preference flow round objects consists of vote tallies for each candidate an
 the ID of the candidate whose votes were transferred.
 ```javascript
 {
-  198: {
-    "electorate_id": 198,        // The electorate of the preference flows
+  179: {
+    "electorate_id": 179,        // The electorate of the preference flows
     "rounds": [                  // The list of rounds of preference flows
       {
         23971: {
