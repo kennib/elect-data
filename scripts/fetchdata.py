@@ -58,8 +58,8 @@ ftp.login()
 # Fetch preload data
 ftp.cwd("/{}/{}/{}/".format(FEED_ID, FEED_DETAIL, FEED_PRELOAD))
 dir = "{}/{}".format(FEED_DETAIL, FEED_PRELOAD)
-fetch_files(dir, files=["xml/eml-*-candidates-*.xml", "xml/eml-*-event-*.xml"],
-                 types=["candidates", "electorates"])
+fetch_files(dir, files=["xml/eml-*-event-*.xml", "xml/eml-*-candidates-*.xml"],
+                 types=["electorates", "candidates"])
 
 
 # Keep polling the FTP server
