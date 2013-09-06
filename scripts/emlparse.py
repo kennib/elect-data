@@ -30,11 +30,13 @@ def eml_to_JSON(eml_file, type="media feed"):
                       'total': value(firstprefs['Total']['Votes']),
                       'formal': value(firstprefs['Formal']['Votes']),
                       'informal': value(firstprefs['Informal']['Votes']),
-                      'votes': {
-                          candidate_id(candidate):
-                              value(candidate['Votes'])
+                      'candidates': [
+                          {
+                              'candidate_id': candidate_id(candidate),
+                              'votes': value(candidate['Votes']),
+                          }
                           for candidate in candidates
-                      }
+                      ]
                   }
 
                   # Two Candidate Preferred data
@@ -50,13 +52,13 @@ def eml_to_JSON(eml_file, type="media feed"):
                   twocandidate_json[electorate_id] = {
                       'electorate_id': electorate_id,
                       'available': not(restricted) and not(maverick),
-                      'candidates': {
-                          candidate_id(candidate): {
+                      'candidates': [
+                          {
                               'candidate_id': candidate_id(candidate),
                               'votes': value(candidate['Votes']),
                           }
                           for candidate in candidates
-                      }
+                      ]
                   }
                   
       # Write JSON files
