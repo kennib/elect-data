@@ -7,6 +7,17 @@ Data processing of the AEC's EML feed for the Australian Federal Election
 The input data can be found in the [AEC's media feed](http://www.aec.gov.au/media/mediafeed/).
 The AEC site lists the specification for their media format in [this pdf](http://www.aec.gov.au/media/mediafeed/).
 
+## Fetching the data
+The Python2.7 `fetchdata.py` script fetches data from the AEC's FTP server and polls it every 90 seconds.
+The script downloads the zip data and extracts the relevant xml files and converts them into JSON files.
+
+All of the files are downloaded, extracted and converted inside of the folder that the script is run.
+Therefore it is recommended that you run the script in the `data/<year>` directory, i.e., `python ../../scripts/fetchdata.py`.
+
+By default the data is fetched from the 2010 directory on the AEC's servers.
+To fetch a different year change the `FEED_ID` in the `fetchdata.py` script to match the url for that year.
+For a list of feeds see http://results.aec.gov.au/.
+
 ## Live output data
 The aim of this project is to produce some simple sets of JSON data from the complex EML format.
 This will hopefully encourage developers with small project ideas to jump in a play with the data.
