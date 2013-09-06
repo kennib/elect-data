@@ -81,9 +81,10 @@ def eml_to_JSON(eml_file, type="media feed"):
                 'candidate_id': cand_id,
                 'electorate_id': electorate_id,
                 'party_id': int(candidate['Affiliation']['AffiliationIdentifier']['@Id']) if 'Affiliation' in candidate else None,
+                'party': candidate['Affiliation'] if 'Affiliation' in candidate else None,
                 'name': candidate['CandidateIdentifier']['CandidateName'],
-                'firstname': candidate['CandidateFullName']['xnl:PersonName']['xnl:FirstName'],
-                'lastname': candidate['CandidateFullName']['xnl:PersonName']['xnl:LastName'],
+                'firstname': candidate['CandidateFullName']['xnl:PersonName']['xnl:FirstName'][1],
+                'lastname': candidate['CandidateFullName']['xnl:PersonName']['xnl:LastName'][1],
                 'gender': candidate['Gender'],
               }
 
