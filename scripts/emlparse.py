@@ -65,6 +65,7 @@ def eml_to_JSON(eml_file, type="media feed"):
       
     elif type == "candidates":
       candidates_json = {}
+      parties_json = {}
 
       for election in elect_data['EML']['CandidateList']['Election']:
         category = election['ElectionIdentifier']['ElectionCategory']
@@ -81,14 +82,22 @@ def eml_to_JSON(eml_file, type="media feed"):
                 'candidate_id': cand_id,
                 'electorate_id': electorate_id,
                 'party_id': int(candidate['Affiliation']['AffiliationIdentifier']['@Id']) if 'Affiliation' in candidate else None,
-                'party': candidate['Affiliation'] if 'Affiliation' in candidate else None,
                 'name': candidate['CandidateIdentifier']['CandidateName'],
                 'firstname': candidate['CandidateFullName']['xnl:PersonName']['xnl:FirstName'][1],
                 'lastname': candidate['CandidateFullName']['xnl:PersonName']['xnl:LastName'][1],
                 'gender': candidate['Gender'],
               }
 
+              if 'Affiliation' in candidate:
+                party_id = candidate['Affiliation']['AffiliationIdentifier']['@Id']
+                parties_json[party_id] = {
+                  'id': party_id,
+                  'shortname': candidate['Affiliation']['AffiliationIdentifier']['@ShortCode'],
+                  'name': candidate['Affiliation']['AffiliationIdentifier']['RegisteredName'],
+                }
+
       json.dump(candidates_json, open('candidates.json', 'w'))
+      json.dump(parties_json, open('parties.json', 'w'))
 
     elif type == "electorates":
       pass
