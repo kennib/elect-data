@@ -7,7 +7,7 @@ Data processing of the AEC's EML feed for the Australian Federal Election
 The input data can be found in the [AEC's media feed](http://www.aec.gov.au/media/mediafeed/).
 The AEC site lists the specification for their media format in [this pdf](http://www.aec.gov.au/media/mediafeed/).
 
-## Output data
+## Live output data
 The aim of this project is to produce some simple sets of JSON data from the complex EML format.
 This will hopefully encourage developers with small project ideas to jump in a play with the data.
 
@@ -85,6 +85,8 @@ The twocandidate json file maps electorates to the two preferred candidates and 
   ...
 }
 ```
+
+## Historical data
 
 ### preferences.json
 The preferences json file is a map of electorate ids to preference flow objects.
