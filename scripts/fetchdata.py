@@ -5,8 +5,8 @@ import emlparse
 
 DELAY = 90 # seconds
 
-FEED_NAME = "results.aec.gov.au"
-FEED_ID = 15508
+FEED_NAME = "mediafeed.aec.gov.au"
+FEED_ID = 17496
 FEED_PRELOAD= "Preload"
 FEED_DETAIL = "Standard"
 FEED_TYPE = "Verbose"
